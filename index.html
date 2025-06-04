@@ -2,20 +2,58 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>3D Model Viewer</title>
+    <title>3DMODEL_TEST</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
       body {
         margin: 0;
+        font-family: sans-serif;
         background: #f0f0f0;
-      }
-      model-viewer {
-        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         height: 100vh;
+      }
+
+      model-viewer {
+        width: 100%;
+        max-width: 600px;
+        height: 400px;
+        background: #fff;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: #0077cc;
+        color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #005fa3;
       }
     </style>
   </head>
   <body>
-    <model-viewer src="TLJ LOCK.glb" alt="A 3D model" auto-rotate camera-controls></model-viewer>
+    <model-viewer id="modelViewer"
+      src="TLJ_LOCK.glb"
+      ios-src="TLJ_LOCK.usdz"
+      alt="3D model of a lock"
+      auto-rotate
+      camera-controls
+      ar
+      ar-modes="scene-viewer quick-look webxr"
+      shadow-intensity="1"
+      exposure="1">
+    </model-viewer>
+
+    <button onclick="document.querySelector('#modelViewer').activateAR();">
+      🔍 View in AR
+    </button>
   </body>
 </html>
